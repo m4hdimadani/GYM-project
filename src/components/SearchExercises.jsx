@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { fetchData, exercisesOptions } from "../utils/fetchData";
 import HorizontalScrollbar from "./HorizontalScrollbar";
 
-function SearchExercises() {
+function SearchExercises({ setExercises, bodyPart, setBodyPart }) {
   const [search, setSearch] = useState("");
-  const [exercises, setExercises] = useState([]);
+ 
   const [bodyParts, setBodyParts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function SearchExercises() {
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exercisesOptions
       );
-      setBodyParts(["all", ...bodyPartsData]);
+      setBodyParts(bodyPartsData);
     };
     fetchExercisesData();
   }, []);
@@ -85,7 +85,11 @@ function SearchExercises() {
         </Button>
       </Box>
       <Box sx={{ position: "relative", width: "100%", p: "20px" }}>
-        <HorizontalScrollbar data={bodyParts} />
+        <HorizontalScrollbar
+          data={bodyParts}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
       </Box>
     </Stack>
   );

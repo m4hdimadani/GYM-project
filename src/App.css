@@ -1,3 +1,6 @@
+
+
+
 body {
     font-family: 'Josefin Sans';
     background-color: #FFFAFB;
@@ -142,4 +145,8 @@ body {
     .exercise-card {
       width: 280px;
     }
+  }
+
+  .swiper-button-next, .swiper-button-prev  {
+    color: #FF2625 !important;
   }
